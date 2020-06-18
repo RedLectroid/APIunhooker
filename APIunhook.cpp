@@ -70,7 +70,7 @@ void unhookAPI(wstring temp, const char *functionName) {
 int main() {
 
 	
-	unhookAPI(L"ntdll.dll", "NtReadVirtualMemory");
+	unhookAPI(L"C:\\Windows\\System32\\ntdll.dll", "NtReadVirtualMemory");
 
 	return 0;
 }
