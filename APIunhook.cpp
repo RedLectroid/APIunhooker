@@ -32,8 +32,6 @@ DWORD RvaToOffset(IMAGE_NT_HEADERS * nth, DWORD RVA)
 void unhookAPI(const char* functionName) {
 	HMODULE lib = LoadLibrary(L"C:\\Windows\\System32\\ntdll.dll");
 	BYTE assemblyBytes[5] = {};
-	char assemblyString[60];
-	int buffSize;
 
 	if (lib) {
 		DWORD base = (DWORD)lib;
