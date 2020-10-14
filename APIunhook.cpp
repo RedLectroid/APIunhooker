@@ -20,7 +20,6 @@ void unhookAPI(const char* functionName) {
 				assemblyBytes[i] = read[i];
 			}
 			WriteProcessMemory(GetCurrentProcess(), GetProcAddress(GetModuleHandle(L"ntdll"), functionName), (LPCVOID)assemblyBytes, 5, NULL);
-
 		}
 		else
 			printf("Function not found!\n");
@@ -31,9 +30,6 @@ void unhookAPI(const char* functionName) {
 	}
 
 int main() {
-
-	
 	unhookAPI("NtReadVirtualMemory");
-
 	return 0;
 }
