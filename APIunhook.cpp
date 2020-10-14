@@ -19,13 +19,14 @@ void unhookAPI(const char* functionName) {
 			for (int i = 0; i < 5; i++) {
 				assemblyBytes[i] = read[i];
 			}
+			WriteProcessMemory(GetCurrentProcess(), GetProcAddress(GetModuleHandle(L"ntdll"), functionName), (LPCVOID)assemblyBytes, 5, NULL);
+
 		}
 		else
 			printf("Function not found!\n");
 	}
 	else
 		printf("Error loading library!\n");
-	WriteProcessMemory(GetCurrentProcess(), GetProcAddress(GetModuleHandle(L"ntdll"), functionName), (LPCVOID)assemblyBytes, 5, NULL);
 	FreeLibrary(lib);
 	}
 
