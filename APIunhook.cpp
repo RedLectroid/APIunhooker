@@ -7,28 +7,6 @@
 using namespace std;
 #pragma comment(lib,"imagehlp")
 
-DWORD RvaToOffset(IMAGE_NT_HEADERS * nth, DWORD RVA)
-{
-	int i;
-	int sections;
-	PIMAGE_SECTION_HEADER sectionHeader;
-	sectionHeader = IMAGE_FIRST_SECTION(nth);
-	sections = nth->FileHeader.NumberOfSections;
-
-	for (i = 0; i < sections; i++)
-	{
-		if (sectionHeader->VirtualAddress <= RVA)
-			if ((sectionHeader->VirtualAddress + sectionHeader->Misc.VirtualSize) > RVA)
-			{
-				RVA -= sectionHeader->VirtualAddress;
-				RVA += sectionHeader->PointerToRawData;
-				return RVA;
-			}
-		sectionHeader++;
-	}
-	return 0;
-}
-
 void unhookAPI(const char* functionName) {
 	HMODULE lib = LoadLibrary(L"C:\\Windows\\System32\\ntdll.dll");
 	BYTE assemblyBytes[5] = {};
