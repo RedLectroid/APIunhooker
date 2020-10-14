@@ -1,11 +1,11 @@
 # APIunhooker
 C++ function that will automagically unhook a specified Windows API
 
-Simply add the functions to whatever you need it for, and call the function with <b>unhookAPI([FullDLLpath],[APIname]);</b>
+Simply add the functions to whatever you need it for, and call the function with <b>unhookAPI([APIname]);</b>
 
-<b>ex. unhookAPI(L"C:\\Windows\\System32\\ntdll.dll", "NtReadVirtualMemory"); </b> 
+<b>ex. unhookAPI("NtReadVirtualMemory"); </b> 
 
-Make sure you use the full path for the dll, like in the example above.
+Currently it has ntdll hardcoded, but there is no reason why you couldn't use it to unhook any other API.  Make sure you use the full path for the dll.
   
 Use it as many times as needed in your code to unhook all the APIs you want/need to for whatever reason.
 
